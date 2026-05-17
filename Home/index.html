@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="it"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porto Torres C'è — Loredana De Marco Sindaca</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+        :root {
+            --blu: #0B3D6F;
+            --blu-scuro: #062747;
+            --bordeaux: #8B1A2B;
+            --bordeaux-hover: #A62038;
+        }
+        body { font-family: 'DM Sans', sans-serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+
+        /* Wave animations */
+        .wave-bg {
+            position: absolute; bottom: 0; left: 0; width: 200%; height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23ffffff' d='M0,60 C360,100 720,20 1080,60 C1260,80 1380,40 1440,60 L1440,100 L0,100Z'/%3E%3C/svg%3E") repeat-x;
+            background-size: 50% 100%;
+            animation: waveSlide 12s linear infinite;
+        }
+        .wave-bg-2 {
+            position: absolute; bottom: 0; left: 0; width: 200%; height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.4' d='M0,40 C240,80 480,10 720,50 C960,90 1200,20 1440,40 L1440,100 L0,100Z'/%3E%3C/svg%3E") repeat-x;
+            background-size: 50% 100%;
+            animation: waveSlide 8s linear infinite reverse;
+        }
+        @keyframes waveSlide { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+        .wave-divider { width:100%; overflow:hidden; line-height:0; }
+        .wave-divider svg { display:block; width:100%; height:60px; }
+        .wave-divider-flip { transform:rotate(180deg); }
+
+        .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(11,61,111,0.15); }
+
+        .fade-in { opacity:0; transform:translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+        .fade-in.visible { opacity:1; transform:translateY(0); }
+
+        html { scroll-behavior: smooth; }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(6,39,71,0.92) 0%, rgba(11,61,111,0.85) 50%, rgba(6,39,71,0.92) 100%);
+        }
+    </style>
+  <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blu: { DEFAULT:'#0B3D6F', dark:'#062747', light:'#1A5C9E' },
+                        bordeaux: { DEFAULT:'#8B1A2B', hover:'#A62038' }
+                    }
+                }
+            }
+        }
+    </script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full min-h-screen bg-white text-gray-800" style="background: rgb(255, 255, 255);"><!-- NAV -->
+  <nav data-template-id="nav-bar" class="canva-header fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10" style="background:rgba(6,39,71,0.95)">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16"><a href="#home" data-template-id="nav-logo" class="canva-text font-display font-bold text-lg tracking-tight" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 18px;">PORTO TORRES C'È</a>
+    <div class="hidden md:flex items-center gap-8"><a href="#home" data-template-id="nav-home" class="canva-link text-sm font-medium hover:text-white/80 transition" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Home</a> <a href="#programma" data-template-id="nav-programma" class="canva-link text-sm font-medium hover:text-white/80 transition" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Programma</a> <a href="#candidati" data-template-id="nav-candidati" class="canva-link text-sm font-medium hover:text-white/80 transition" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Candidati</a> <a href="#contatti" data-template-id="nav-contatti" class="canva-link text-sm font-medium hover:text-white/80 transition" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Contatti</a>
+    </div><button id="mobile-menu-btn" class="md:hidden text-white" aria-label="Menu"> <i data-lucide="menu" style="width:28px;height:28px"></i> </button>
+   </div>
+   <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3"><a href="#home" class="block text-white/90 text-sm font-medium py-1">Home</a> <a href="#programma" class="block text-white/90 text-sm font-medium py-1">Programma</a> <a href="#candidati" class="block text-white/90 text-sm font-medium py-1">Candidati</a> <a href="#contatti" class="block text-white/90 text-sm font-medium py-1">Contatti</a>
+   </div>
+  </nav><!-- HERO -->
+  <header id="home" data-template-id="hero-section" class="canva-section relative w-full overflow-hidden" style="min-height: calc(100 * min(var(--vh,1vh),1vh)); background: rgb(6, 39, 71);"><img data-template-id="hero-bg-img" class="canva-image absolute inset-0 w-full h-full object-cover" loading="lazy" src="resources/images/Sfondo.jpeg" alt="Stunning coastal view of Sardinia with crystal blue waters">
+   <div class="hero-overlay absolute inset-0"></div>
+   <div class="wave-bg"></div>
+   <div class="wave-bg-2"></div>
+   <div class="relative z-10 flex flex-col items-center justify-center px-4 pt-24 pb-40 text-center" style="min-height:calc(100 * min(var(--vh,1vh),1vh))">
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 max-w-6xl mx-auto">
+     <div class="flex-shrink-0"><img data-template-id="hero-candidate-img" class="canva-image w-56 h-72 sm:w-64 sm:h-80 lg:w-72 lg:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20" loading="lazy" src="resources/images/LoredanaDeMarco.jpeg" alt="Loredana De Marco, candidata sindaca di Porto Torres">
+     </div>
+     <div class="flex flex-col items-center lg:items-start gap-5">
+      <img src="resources/images/LogoTrasparente.png" alt="Logo" height = "200px" width = "200px"> 
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-3 border border-white/20">
+       <p data-template-id="hero-list-name" class="canva-text font-display font-bold text-center lg:text-left" style="font-size: 20px; color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-family: Bastoni;">PORTO TORRES C'È</p>
+      </div>
+      <h1 data-template-id="hero-title" class="canva-text font-display font-extrabold leading-tight" style="font-size: 32px; color: rgb(255, 255, 255); font-weight: 800; font-style: normal;">LOREDANA DE MARCO SINDACA</h1>
+      <p data-template-id="hero-slogan" class="canva-text font-display font-semibold leading-snug whitespace-pre-line uppercase" style="font-size: 16px; color: rgb(255, 255, 255); font-weight: 600; font-style: normal;">LA VOSTRA VOCE LA NOSTRA FORZA</p>
+      <div class="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start"><a href="#programma" data-template-id="hero-cta-programma" class="canva-button px-7 py-3 rounded-full font-bold text-sm uppercase tracking-wider shadow-lg hover:shadow-xl transition-all hover:scale-105" style="background: rgb(139, 26, 43); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Scopri il Programma</a> <a href="#candidati" data-template-id="hero-cta-candidati" class="canva-button px-7 py-3 rounded-full font-bold text-sm uppercase tracking-wider border-2 hover:scale-105 transition-all" style="background: transparent; color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Conosci i Candidati</a> <a href="#contatti" data-template-id="hero-cta-contatti" class="canva-button px-7 py-3 rounded-full font-bold text-sm uppercase tracking-wider border-2 hover:scale-105 transition-all" style="background: transparent; color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Contattaci</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header><!-- WAVE DIVIDER -->
+  <div class="wave-divider" aria-hidden="true">
+   <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="#0B3D6F" d="M0,0 C360,50 720,10 1080,40 C1260,55 1380,20 1440,30 L1440,0 L0,0Z"></path>
+   </svg>
+  </div><!-- BIOGRAFIA -->
+  <main>
+   <section id="biografia" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto fade-in">
+     <h2 data-template-id="bio-heading" class="canva-text font-display font-bold text-center mb-12" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 36px;">Loredana De Marco</h2>
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div><img data-template-id="bio-img" class="canva-image w-full h-80 lg:h-[28rem] object-cover rounded-2xl shadow-lg" loading="lazy" src="resources/images/LoredanaDeMarco_Headshot.jpeg" alt="Loredana De Marco in un momento di incontro con i cittadini">
+      </div>
+      <div class="space-y-6">
+       <p data-template-id="bio-text" class="canva-text leading-relaxed text-lg" style="color: rgb(55, 65, 81); font-weight: 400; font-style: normal; font-size: 17px;">Loredana De Marco è nata e cresciuta a Porto Torres. Con una lunga esperienza nel servizio pubblico e un profondo legame con il territorio, ha deciso di candidarsi alla guida della città per dare voce a tutti i quartieri, nessuno escluso. La sua visione si fonda sull'ascolto, la trasparenza e la concretezza: valori che l'hanno accompagnata in ogni fase della sua vita professionale e civica.</p>
+       <div class="border-l-4 border-bordeaux pl-6 py-2">
+        <h3 data-template-id="bio-vision-heading" class="canva-text font-display font-bold mb-3" style="color: rgb(139, 26, 43); font-weight: 700; font-style: normal; font-size: 22px;">La Mia Visione</h3>
+        <p data-template-id="bio-vision-text" class="canva-text leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Una Porto Torres dove ogni quartiere conta, dove i giovani trovano opportunità, dove il mare e la cultura diventano motore di sviluppo. Una città trasparente, partecipata, orgogliosa della propria identità.</p>
+       </div>
+      </div>
+     </div>
+     <div class="mt-16"><img data-template-id="bio-sea-img" class="canva-image w-full h-64 object-cover rounded-2xl shadow-md" loading="lazy" src="resources/images/Sfondo.jpeg" alt="Vista panoramica della costa sarda con acque turchesi">
+     </div>
+    </div>
+   </section><!-- WAVE -->
+   <div class="wave-divider wave-divider-flip" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+     <path fill="#0B3D6F" d="M0,60 C360,10 720,50 1080,20 C1260,5 1380,40 1440,30 L1440,60 L0,60Z"></path>
+    </svg>
+   </div><!-- PROGRAMMA -->
+   <section id="programma" data-template-id="programma-section" class="canva-section py-20 px-4" style="background: rgb(11, 61, 111);">
+    <div class="max-w-6xl mx-auto">
+     <h2 data-template-id="programma-heading" class="canva-text font-display font-bold text-center mb-4" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 36px;">Programma Elettorale</h2>
+     <p data-template-id="programma-subtitle" class="canva-text text-center mb-14 max-w-2xl mx-auto" style="color: rgba(255, 255, 255, 0.8); font-weight: 400; font-style: normal; font-size: 16px;">10 aree d'intervento per il futuro di Porto Torres</p>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"><!-- 10 program cards -->
+      <div data-template-id="prog-quartieri" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🏘️
+       </div>
+       <h3 data-template-id="prog-quartieri-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Quartieri</h3>
+       <p data-template-id="prog-quartieri-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Rigenerazione urbana, manutenzione costante e attenzione a ogni zona della città.</p>
+      </div>
+      <div data-template-id="prog-lavoro" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        💼
+       </div>
+       <h3 data-template-id="prog-lavoro-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Lavoro</h3>
+       <p data-template-id="prog-lavoro-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Sostegno alle imprese locali, nuove opportunità occupazionali e formazione professionale.</p>
+      </div>
+      <div data-template-id="prog-giovani" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🎓
+       </div>
+       <h3 data-template-id="prog-giovani-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Giovani</h3>
+       <p data-template-id="prog-giovani-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Spazi di aggregazione, borse di studio e percorsi di crescita per le nuove generazioni.</p>
+      </div>
+      <div data-template-id="prog-cultura" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🎭
+       </div>
+       <h3 data-template-id="prog-cultura-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Cultura</h3>
+       <p data-template-id="prog-cultura-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Valorizzazione del patrimonio storico-archeologico e promozione di eventi culturali.</p>
+      </div>
+      <div data-template-id="prog-sociale" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🤝
+       </div>
+       <h3 data-template-id="prog-sociale-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Sociale</h3>
+       <p data-template-id="prog-sociale-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Servizi alle famiglie, supporto agli anziani e inclusione per tutti.</p>
+      </div>
+      <div data-template-id="prog-ambiente" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🌿
+       </div>
+       <h3 data-template-id="prog-ambiente-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Ambiente</h3>
+       <p data-template-id="prog-ambiente-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Tutela del mare, energie rinnovabili e gestione sostenibile del territorio.</p>
+      </div>
+      <div data-template-id="prog-sport" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        ⚽
+       </div>
+       <h3 data-template-id="prog-sport-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Sport</h3>
+       <p data-template-id="prog-sport-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Impianti sportivi moderni, sostegno alle associazioni e sport per tutti.</p>
+      </div>
+      <div data-template-id="prog-mobilita" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🚌
+       </div>
+       <h3 data-template-id="prog-mobilita-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Mobilità</h3>
+       <p data-template-id="prog-mobilita-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Trasporto pubblico efficiente, piste ciclabili e viabilità sicura.</p>
+      </div>
+      <div data-template-id="prog-decoro" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🏛️
+       </div>
+       <h3 data-template-id="prog-decoro-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Decoro Urbano</h3>
+       <p data-template-id="prog-decoro-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Pulizia, illuminazione, verde pubblico curato e arredi urbani dignitosi.</p>
+      </div>
+      <div data-template-id="prog-sicurezza" class="canva-card card-hover rounded-2xl p-6 text-center fade-in" style="background: rgb(255, 255, 255);">
+       <div class="text-4xl mb-3">
+        🛡️
+       </div>
+       <h3 data-template-id="prog-sicurezza-title" class="canva-text font-bold mb-2" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Sicurezza</h3>
+       <p data-template-id="prog-sicurezza-desc" class="canva-text text-sm leading-relaxed" style="color: rgb(75, 85, 99); font-weight: 400; font-style: normal; font-size: 16px;">Videosorveglianza, polizia locale potenziata e quartieri più sicuri.</p>
+      </div>
+     </div>
+     <div class="text-center mt-12"><a href="resources/docs/ProgrammaCompleto.pdf" download="ProgrammaCompleto.pdf" target="_blank" rel="noopener noreferrer" data-template-id="programma-pdf-btn" class="canva-button inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all hover:scale-105" style="background: rgb(139, 26, 43); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Scarica il Programma Completo</a>
+     </div>
+    </div>
+   </section><!-- WAVE -->
+   <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+     <path fill="#0B3D6F" d="M0,0 C360,50 720,10 1080,40 C1260,55 1380,20 1440,30 L1440,0 L0,0Z"></path>
+    </svg>
+   </div><!-- CANDIDATI -->
+   <section id="candidati" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+     <h2 data-template-id="candidati-heading" class="canva-text font-display font-bold text-center mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 36px;">I Nostri Candidati</h2>
+     <p data-template-id="candidati-subtitle" class="canva-text text-center mb-14 max-w-2xl mx-auto" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 16px;">Donne e uomini al servizio della comunità, con trasparenza e competenza.</p>
+     <div class="grid sm:grid-cols-6 lg:grid-cols-3 gap-8"><!-- 18 candidate cards -->
+      <div data-template-id="cand-0-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-0-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Loredana De Marco</h3>
+       <div class="flex gap-2"> 
+        <a href="resources/docs/LoredanaDeMarcoCV.pdf" download="LoredanaDeMarcoCV.pdf" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="resources/docs/LoredanaDeMarcoCarichiPendenti.pdf" download="LoredanaDeMarcoCarichiPendenti.pdf" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>  
+      <div data-template-id="cand-1-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-1-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Daniela Biddau</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-2-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-2-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Silvana Doro</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-2-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-2-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-3-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-3-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Andrea Falchi</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-3-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-3-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-4-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-4-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Samuela Falchi</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-4-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-4-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-5-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-5-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Domenico Laudando</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-5-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-5-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-6-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-6-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Melania Manunta</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-6-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-6-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-7-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-7-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Giuseppe Palermo</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-8-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-8-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Massimo Pintus</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-2-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-2-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-9-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-9-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Mauro Pranovi</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-3-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-3-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-10-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-10-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Patrizia Trincas</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-4-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-4-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-11-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-11-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Margherita Puledda</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-5-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-5-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-12-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-12-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Marco Bodano</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-6-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-6-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-13-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-13-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Leonardo Meazza</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-1-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-14-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-14-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Marco Norio</h3>
+       <div class="flex gap-2"> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-2-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a>  
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-2-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-15-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-15-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Barbara Pischedda</h3>
+       <div class="flex gap-2">
+        <a href="resources/docs/BarbaraPischeddaCV.pdf" download="BarbaraPischeddaCV.pdf" target="_blank" rel="noopener noreferrer" data-template-id="cand-3-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-3-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-16-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-16-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Roberto Martinelli</h3>
+       <div class="flex gap-2">
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-4-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-4-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+      </div>
+      <div data-template-id="cand-17-card" class="canva-card card-hover rounded-2xl p-5 fade-in" style="background: rgb(255, 255, 255);">
+       <h3 data-template-id="cand-17-name" class="canva-text font-bold text-lg mb-4" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 19px;">Francesco Piredda</h3>
+       <div class="flex gap-2">
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-5-cv" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Curriculum</a> 
+        <a href="#" target="_blank" rel="noopener noreferrer" data-template-id="cand-5-carichi" class="canva-button flex-1 text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition hover:opacity-80" style="background: rgb(240, 245, 250); color: rgb(11, 61, 111); font-weight: 700; font-style: normal; font-size: 16px;">Carichi Pendenti</a>
+       </div>
+     </div>
+    </div>
+   <section id="contatti" class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto text-center fade-in">
+     <h2 data-template-id="contatti-heading" class="canva-text font-display font-bold mb-6" style="color: rgb(6, 39, 71); font-weight: 700; font-style: normal; font-size: 36px;">Contatti</h2>
+     <p data-template-id="contatti-subtitle" class="canva-text mb-10 max-w-xl mx-auto" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 16px;">Scrivici o seguici sui social per restare aggiornato sulla campagna elettorale.</p>
+     <div class="flex justify-center gap-6">
+        <a href="https://www.facebook.com/profile.php?id=61578790401413" target="_blank" rel="noopener noreferrer" data-template-id="contatti-facebook" class="canva-button w-14 h-14 rounded-full flex items-center justify-center transition hover:scale-110 shadow-md" style="background: rgb(11, 61, 111); color: rgb(255, 255, 255);"> <i data-lucide="facebook" style="width:24px;height:24px"></i> </a> 
+        <a href="https://www.instagram.com/porto.torres.ce/" target="_blank" rel="noopener noreferrer" data-template-id="contatti-instagram" class="canva-button w-14 h-14 rounded-full flex items-center justify-center transition hover:scale-110 shadow-md" style="background: rgb(139, 26, 43); color: rgb(255, 255, 255);"> <i data-lucide="instagram" style="width:24px;height:24px"></i> </a>
+     </div>
+    </div>
+   </section>
+  </main><!-- FOOTER WAVE -->
+  <div class="wave-divider wave-divider-flip" aria-hidden="true">
+   <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path fill="#062747" d="M0,60 C360,10 720,50 1080,20 C1260,5 1380,40 1440,30 L1440,60 L0,60Z"></path>
+   </svg>
+  </div>
+  <footer data-template-id="footer-section" class="canva-footer px-4 py-12" style="background: rgb(6, 39, 71);">
+   <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+    <div>
+     <p data-template-id="footer-logo" class="canva-text font-display font-bold text-xl mb-3" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">PORTO TORRES C'È</p>
+     <p data-template-id="footer-slogan" class="canva-text text-sm opacity-80" style="color: rgba(255, 255, 255, 0.7); font-weight: 400; font-style: normal; font-size: 16px;">La vostra voce, la mia forza.</p>
+    </div>
+    <div class="space-y-2">
+     <p data-template-id="footer-links-title" class="canva-text font-bold text-sm uppercase tracking-wider mb-3" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Link Rapidi</p><a href="#home" data-template-id="footer-link-home" class="canva-link block text-sm opacity-80 hover:opacity-100 transition" style="color: rgba(255, 255, 255, 0.7); font-weight: 400; font-style: normal; font-size: 16px;">Home</a> <a href="#programma" data-template-id="footer-link-programma" class="canva-link block text-sm opacity-80 hover:opacity-100 transition" style="color: rgba(255, 255, 255, 0.7); font-weight: 400; font-style: normal; font-size: 16px;">Programma</a> <a href="#candidati" data-template-id="footer-link-candidati" class="canva-link block text-sm opacity-80 hover:opacity-100 transition" style="color: rgba(255, 255, 255, 0.7); font-weight: 400; font-style: normal; font-size: 16px;">Candidati</a> <a href="#contatti" data-template-id="footer-link-contatti" class="canva-link block text-sm opacity-80 hover:opacity-100 transition" style="color: rgba(255, 255, 255, 0.7); font-weight: 400; font-style: normal; font-size: 16px;">Contatti</a>
+    </div>
+    <div class="space-y-3">
+     <div class="flex gap-4"><a href="https://www.facebook.com/profile.php?id=61578790401413" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-white transition"><i data-lucide="facebook" style="width:20px;height:20px"></i></a> <a href="https://www.instagram.com/porto.torres.ce/" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-white transition"><i data-lucide="instagram" style="width:20px;height:20px"></i></a>
+     </div>
+     <p data-template-id="footer-privacy" class="canva-text text-xs opacity-60" style="color: rgba(255, 255, 255, 0.5); font-weight: 400; font-style: normal; font-size: 16px;">© 2025 Porto Torres C'è — Lista Civica. Tutti i diritti riservati. Privacy Policy.</p>
+    </div>
+   </div>
+  </footer>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script>
+        // Mobile menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(a => {
+            a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+        });
+
+        // Fade-in on scroll
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+        lucide.createIcons();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fb9ee59d7adee71',t:'MTc3ODc2MjAwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body></html>
